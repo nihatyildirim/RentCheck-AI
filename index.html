@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RentCheck AI - Araç kiralama için açıklanabilir ön uygunluk değerlendirme uygulaması.">
+  <title>RentCheck AI | Araç Kiralama Ön Uygunluk</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="RentCheck AI ana sayfa">
+        <span class="brand-main">RentCheck</span><span class="brand-ai">AI</span>
+      </a>
+      <span class="header-tag">Açıklanabilir Ön Değerlendirme</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">ARAÇ KİRALAMA UYGUNLUK SİSTEMİ</span>
+          <h1>Başvuru öncesi hızlı, net ve şeffaf değerlendirme.</h1>
+          <p class="hero-copy">Yaş, ehliyet süresi, aylık gelir ve adli sicil bilgilerinizi girin. Sistem saniyeler içinde ön uygunluk durumunuzu, gerekçeleri ve iyileştirme önerilerini oluştursun.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#application">Değerlendirmeyi Başlat</a>
+            <a class="button secondary" href="#how-it-works">Nasıl Çalışır?</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Sistem özeti">
+          <div class="hero-card-icon">✓</div>
+          <h2>Şeffaf karar desteği</h2>
+          <ul>
+            <li>Uygun / Uygun Değil sonucu</li>
+            <li>Tüm gerekçelerin gösterilmesi</li>
+            <li>Kişiye özel iyileştirme önerileri</li>
+            <li>Veri saklamayan tarayıcı tabanlı MVP</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="section muted">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">MVP UYGULAMA AKIŞI</span>
+          <h2>Dört adımda ön değerlendirme</h2>
+        </div>
+        <div class="steps">
+          <article class="step"><span>1</span><h3>Ana Sayfa</h3><p>Sistem ve değerlendirme kapsamı hakkında bilgi alın.</p></article>
+          <article class="step"><span>2</span><h3>Bilgi Formu</h3><p>Dört temel uygunluk bilgisini eksiksiz girin.</p></article>
+          <article class="step"><span>3</span><h3>Akıllı Kontrol</h3><p>Açıklanabilir uzman sistem kuralları bilgileri analiz etsin.</p></article>
+          <article class="step"><span>4</span><h3>Sonuç Ekranı</h3><p>Kararı, nedenleri ve önerileri aynı ekranda görün.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="application" class="section">
+      <div class="container form-layout">
+        <div class="form-intro">
+          <span class="eyebrow">ÖN UYGUNLUK FORMU</span>
+          <h2>Bilgilerinizi girin</h2>
+          <p>Bu değerlendirme eğitim amaçlı bir prototiptir. Nihai kiralama onayı yerine geçmez.</p>
+          <div class="criteria-card">
+            <h3>MVP kriterleri</h3>
+            <dl>
+              <div><dt>Minimum yaş</dt><dd>25</dd></div>
+              <div><dt>Minimum ehliyet</dt><dd>3 yıl</dd></div>
+              <div><dt>Minimum aylık gelir</dt><dd>15.000 TL</dd></div>
+              <div><dt>Adli sicil</dt><dd>Temiz</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <form id="eligibility-form" class="application-form" novalidate>
+          <div id="form-alert" class="alert error" role="alert" hidden></div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="age">Yaş <span aria-hidden="true">*</span></label>
+              <input id="age" name="age" type="number" min="18" max="100" step="1" inputmode="numeric" placeholder="Örn. 28" required>
+              <small>18 ile 100 arasında tam sayı giriniz.</small>
+              <p class="field-error" id="age-error"></p>
+            </div>
+
+            <div class="field">
+              <label for="licenseYears">Ehliyet süresi (yıl) <span aria-hidden="true">*</span></label>
+              <input id="licenseYears" name="licenseYears" type="number" min="0" max="82" step="1" inputmode="numeric" placeholder="Örn. 5" required>
+              <small>Tam yıl olarak belirtiniz.</small>
+              <p class="field-error" id="licenseYears-error"></p>
+            </div>
+
+            <div class="field">
+              <label for="monthlyIncome">Aylık gelir (TL) <span aria-hidden="true">*</span></label>
+              <input id="monthlyIncome" name="monthlyIncome" type="number" min="0" step="100" inputmode="numeric" placeholder="Örn. 30000" required>
+              <small>Vergi ve kesintiler sonrası yaklaşık tutar.</small>
+              <p class="field-error" id="monthlyIncome-error"></p>
+            </div>
+
+            <div class="field">
+              <label for="criminalRecord">Adli sicil durumu <span aria-hidden="true">*</span></label>
+              <select id="criminalRecord" name="criminalRecord" required>
+                <option value="">Seçiniz</option>
+                <option value="clean">Temiz</option>
+                <option value="record">Kayıt mevcut</option>
+                <option value="unknown">Bilinmiyor / Belirtilmedi</option>
+              </select>
+              <small>Bu bilgi yalnızca tarayıcı içinde değerlendirilir.</small>
+              <p class="field-error" id="criminalRecord-error"></p>
+            </div>
+          </div>
+
+          <label class="consent">
+            <input id="consent" name="consent" type="checkbox" required>
+            <span>Sonucun yalnızca ön değerlendirme olduğunu ve nihai kiralama kararı sayılmadığını kabul ediyorum.</span>
+          </label>
+          <p class="field-error" id="consent-error"></p>
+
+          <button class="button primary wide" type="submit">Uygunluğumu Değerlendir</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="result-section" class="section result-section" hidden aria-live="polite">
+      <div class="container">
+        <article id="result-card" class="result-card">
+          <div class="result-topline">
+            <span id="result-badge" class="result-badge"></span>
+            <span id="result-score" class="result-score"></span>
+          </div>
+          <h2 id="result-title"></h2>
+          <p id="result-summary" class="result-summary"></p>
+
+          <div class="result-columns">
+            <div>
+              <h3>Değerlendirme gerekçeleri</h3>
+              <ul id="reasons-list" class="result-list"></ul>
+            </div>
+            <div>
+              <h3>Öneriler</h3>
+              <ul id="suggestions-list" class="result-list"></ul>
+            </div>
+          </div>
+
+          <div class="disclaimer">
+            <strong>Önemli:</strong> Bu sonuç eğitim amaçlı MVP tarafından oluşturulan bir ön değerlendirmedir. Kesin rezervasyon veya kiralama onayı değildir.
+          </div>
+
+          <button id="reset-button" class="button secondary" type="button">Yeni Değerlendirme</button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><strong>RentCheck AI</strong><br><span>CPP214 Projesi</span></div>
+      <div>Öğrenci: Nihat Yıldırım · 24010502146</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/eligibility.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

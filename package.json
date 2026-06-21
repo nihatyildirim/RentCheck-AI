@@ -1,0 +1,11 @@
+{
+  "name": "rentcheck-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Araç kiralama için açıklanabilir ön uygunluk değerlendirme MVP'si",
+  "scripts": {
+    "test": "node tests/eligibility.test.js",
+    "start": "python -m http.server 8000"
+  },
+  "license": "MIT"
+}
